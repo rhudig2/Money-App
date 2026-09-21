@@ -1,0 +1,86 @@
+body{
+    background-color:#f0f2f5;
+    font-family:SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+}
+.logo{
+    width: 100%;
+    margin-left: 25px;
+    height: auto;
+    
+}
+.welcometext{
+    font-family:SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    margin-top: -10px;
+}
+.textandlogocontainer{
+    padding-left: 300px;
+    padding-top: 200px;
+}
+.createpagetext{
+    margin-left: 900px
+}
+.Createapagelink{
+    color:black;
+    text-decoration: none;
+}
+
+.Createapagelink:hover{
+    text-decoration: underline;
+}
+
+.signincontainer{
+    background-color: white;
+    width: 250px;
+    padding: 23px 10px;
+    padding-left: 10px;
+    margin-left: 900px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+input[type="text"]{
+    width: 220px;
+    padding: 7px 8px;
+    margin: 5px ;
+    margin-right: 100px;
+    border: 1px solid #dddfe2;
+    border-radius: 3px;
+    
+}
+input[type="password"]{
+    width: 220px;
+    padding: 7px 8px;
+    margin: 5px ;
+    border: 1px solid #dddfe2;
+    border-radius: 3px;
+    
+}
+input[type="submit"]{
+    width: 235px;
+    padding: 7px 8px;
+    margin: 5px 8px ;
+    border: 1px solid #1877f2;
+    border-radius: 3px;
+    background-color: #1877f2;
+    color:white;
+}
+.createaccountbutton{
+    width: 70%;
+    padding: 7px 8px;
+    margin: 5px 8px ;
+    border: 1px solid #42b72a;
+    border-radius: 3px;
+    background-color: #42b72a;
+    color:white;
+}
+.passwordtext{
+    text-decoration: none;
+    margin-left: 45px;
+}
+.passwordtext:hover{
+    text-decoration: underline;
+}
+.linetext{
+    border:-1px solid;
+    opacity: 0.4;
+}

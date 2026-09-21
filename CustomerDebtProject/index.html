@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/loginforms.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/notifications.css">
+
+    <script src="./auth.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login_container">
+
+        
+        <form id="register_form" class="form hidden">
+            <div class="success">
+                <div class="success__icon">
+                    <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="m12 1c-6.075 0-11 4.925-11 11s4.925 11 11 11 11-4.925 11-11-4.925-11-11-11zm4.768 9.14c.0878-.1004.1546-.21726.1966-.34383.0419-.12657.0581-.26026.0477-.39319-.0105-.13293-.0475-.26242-.1087-.38085-.0613-.11844-.1456-.22342-.2481-.30879-.1024-.08536-.2209-.14938-.3484-.18828s-.2616-.0519-.3942-.03823c-.1327.01366-.2612.05372-.3782.1178-.1169.06409-.2198.15091-.3027.25537l-4.3 5.159-2.225-2.226c-.1886-.1822-.4412-.283-.7034-.2807s-.51301.1075-.69842.2929-.29058.4362-.29285.6984c-.00228.2622.09851.5148.28067.7034l3 3c.0983.0982.2159.1748.3454.2251.1295.0502.2681.0729.4069.0665.1387-.0063.2747-.0414.3991-.1032.1244-.0617.2347-.1487.3236-.2554z"
+                            fill="#393a37" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <div class="success__title">Registration successful</div>
+                <div class="success__close"><svg height="20" viewBox="0 0 20 20" width="20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                            fill="#393a37"></path>
+                    </svg></div>
+            </div>
+            
+
+            
+            <p class="title">Register </p>
+            <p class="message">Register to manage customers </p>
+            <div class="flex">
+                <label>
+                    <input id="register_firstname" required="" placeholder="" type="text" class="input">
+                    <span>Firstname</span>
+                </label>
+
+                <label>
+                    <input id="register_lastname" required="" placeholder="" type="text" class="input">
+                    <span>Lastname</span>
+                </label>
+            </div>
+
+            <label>
+                <input id="register_email" required="" placeholder="" type="email" class="input">
+                <span>Email</span>
+            </label>
+
+            <label>
+                <input id="register_password" required="" placeholder="" type="password" class="input">
+                <span>Password</span>
+            </label>
+            <div class="error-alert hidden">
+                <div class="flexer">
+                    <div class="flex-shrink-0">
+
+                        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg" class="error-svg">
+                            <path clip-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="error-prompt-container">
+                        <div class="error-prompt-wrap">
+                            <ul class="error-prompt-list" role="list">
+                                <li>Password must be at least 8 characters</li>
+                                <li>Password must include lowercase, uppercase, & digit</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label>
+                <input id="register_confirm_password" required="" placeholder="" type="password" class="input">
+                <span>Confirm password</span>
+            </label>
+            <span class="pas-warn hidden"> Passwords do not match</span>
+
+            <button class="submit">Submit</button>
+            <p class="signin">Already have an acount ? <a href="#" id="signin_link">Signin</a> </p>
+        </form>
+
+        <form id="Login_form" class="form">
+            <div class="failure">
+                <div class="success__icon">
+                    <svg width="31" height="31" fill="none" stroke="#dd3c3c" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4.75a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 1 0 0-6.5z"></path>
+                        <path d="M12.25 19.25h-5.3c-1.18 0-2.06-1.04-1.46-2.055C6.363 15.723 8.24 14 12.25 14"></path>
+                        <path d="m19.25 19.25-3.5-3.5"></path>
+                        <path d="m15.75 19.25 3.5-3.5"></path>
+                      </svg>
+                </div>
+                <div class="success__title">Invalid Credentials</div>
+                <button onclick="closeError()" type="button" class="success__close"><svg height="20" viewBox="0 0 20 20" width="20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                            fill="#393a37"></path>
+                    </svg></button>
+            </div>
+
+            <div class="success_login">
+                <div class="success__icon">
+                    <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd"
+                            d="m12 1c-6.075 0-11 4.925-11 11s4.925 11 11 11 11-4.925 11-11-4.925-11-11-11zm4.768 9.14c.0878-.1004.1546-.21726.1966-.34383.0419-.12657.0581-.26026.0477-.39319-.0105-.13293-.0475-.26242-.1087-.38085-.0613-.11844-.1456-.22342-.2481-.30879-.1024-.08536-.2209-.14938-.3484-.18828s-.2616-.0519-.3942-.03823c-.1327.01366-.2612.05372-.3782.1178-.1169.06409-.2198.15091-.3027.25537l-4.3 5.159-2.225-2.226c-.1886-.1822-.4412-.283-.7034-.2807s-.51301.1075-.69842.2929-.29058.4362-.29285.6984c-.00228.2622.09851.5148.28067.7034l3 3c.0983.0982.2159.1748.3454.2251.1295.0502.2681.0729.4069.0665.1387-.0063.2747-.0414.3991-.1032.1244-.0617.2347-.1487.3236-.2554z"
+                            fill="#393a37" fill-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <div class="success__title">Login successful</div>
+                <button type="button" onclick="closeError()" class="success__close"><svg  height="20" viewBox="0 0 20 20" width="20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                            fill="#393a37"></path>
+                    </svg></button>
+            </div>
+            <p class="title">Login </p>
+            <p class="message">Login to your account </p>
+            <label>
+                <input id="login_email" required="" placeholder="" type="email" class="input">
+                <span>Email</span>
+            </label>
+
+            <label>
+                <input id="login_password" required="" placeholder="" type="password" class="input">
+                <span>Password</span>
+            </label>
+            <button class="submit">Login</button>
+            <p class="signin"> Don't have an acount ? <a href="#" id="register_link">Register</a> </p>
+        </form>
+    </div>
+</body>
+
+</html>

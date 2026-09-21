@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/forms.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="nav_bar">
+        <div class="log_out_container">
+            <svg width="29" height="29" fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M12 1.842a5.558 5.558 0 0 0-1.543 10.9c-1.83.222-3.401.87-4.584 2.036-1.506 1.484-2.268 3.693-2.268 6.575a.728.728 0 1 0 1.457 0c0-2.637.694-4.415 1.833-5.538C8.037 14.69 9.741 14.108 12 14.108c2.259 0 3.963.582 5.105 1.707 1.139 1.123 1.833 2.9 1.833 5.538a.728.728 0 1 0 1.457 0c0-2.882-.762-5.091-2.268-6.575-1.183-1.166-2.753-1.814-4.584-2.037A5.558 5.558 0 0 0 12 1.841ZM7.898 7.4a4.102 4.102 0 1 1 8.204 0 4.102 4.102 0 0 1-8.204 0Z"
+                    clip-rule="evenodd"></path>
+            </svg>
+            <button onclick="logoutUser()" type="button">Logout</button>
+        </div>
+    </div>
+    <div id="editCustomerForm_container" class="hidden allFormsdisplay">
+        <form id="editCustomerForm" class="form">
+            <div class="close_button_container">
+                <button id="DeleteCustomer" class="deleteCustomerbutton" type="button">
+                    <svg viewBox="0 0 448 512" class="svgIcon">
+                        <path
+                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                        </path>
+                    </svg>
+                </button>
+                <button onclick="handlecloseEditCustomer()" class="close_button" type="button" title="close"><svg
+                        width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="m4 4 16 16"></path>
+                        <path d="M4 20 20 4"></path>
+                    </svg>
+
+                </button>
+            </div>
+            <p class="title">Edit Customer </p>
+            <p class="message">Edit existing customer </p>
+            <div class="flex">
+                <label>
+                    <input required type="text" class="input" id="edit_first_name">
+                    <span>Firstname</span>
+                </label>
+
+                <label>
+                    <input id="edit_last_name" required="" placeholder="" type="text" class="input">
+                    <span>Lastname</span>
+                </label>
+            </div>
+            <label>
+                <input id="edit_dob_id" required="" placeholder="" type="date" class="input">
+                <span id="dob_style">Date of birth</span>
+            </label>
+            <label>
+                <select name="gender" id="edit_gender_id" class="input" required>
+                    <option value=""></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span>Gender</span>
+
+            </label>
+
+            <label>
+                <input id="edit_email_id" required="" placeholder="" type="email" class="input">
+                <span>Email</span>
+            </label>
+
+            <label>
+                <input id="edit_phone_id" required="" placeholder="" type="tel" class="input">
+                <span>Phone</span>
+            </label>
+            <label>
+                <input id="edit_address_id" required="" placeholder="" type="text" class="input">
+                <span>Address</span>
+            </label>
+            <label>
+                <input type="number" id="edit_credit_balance" required class="input">
+                <span>Credit Balance</span>
+            </label>
+            <button type="submit" class="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <div id="disburse_loan_form_container" class="hidden allFormsdisplay">
+        <form id="disburse_loan_form" class="form">
+            <div class="close_button_container">
+                <button onclick="handlecloseDisburseLoan()" class="close_button" type="button" title="close"><svg
+                        width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="m4 4 16 16"></path>
+                        <path d="M4 20 20 4"></path>
+                    </svg>
+
+                </button>
+            </div>
+            <p class="title">Disburse Loan </p>
+            <p class="message">Select customer to disburse a loan</p>
+            <label>
+                <select name="customer" id="customer_select_id" class="input" required>
+                    <option value=""> </option>
+
+                </select>
+                <span>Customer</span>
+
+            </label>
+            <label>
+                <input id="loan_amount" required="" placeholder="" type="number" class="input">
+                <span>Loan Amount</span>
+            </label>
+            <label>
+                <input id="loan_duration" required="" placeholder="" type="date" class="input">
+                <span id="loan_duration_style">Loan duration</span>
+            </label>
+
+            <button type="submit" class="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="New_customer_form_container" class="hidden allFormsdisplay">
+        <form id="new_customer_form" class="form">
+            <div class="close_button_container">
+                <button onclick="handlecloseCustomer()" class="close_button" type="button" title="close"><svg width="24"
+                        height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m4 4 16 16"></path>
+                        <path d="M4 20 20 4"></path>
+                    </svg>
+
+                </button>
+            </div>
+            <p class="title">New Customer </p>
+            <p class="message">Create a new customer record to manage</p>
+            <div class="flex">
+                <label>
+                    <input required type="text" class="input" id="first_name">
+                    <span>Firstname</span>
+                </label>
+
+                <label>
+                    <input id="last_name" required="" placeholder="" type="text" class="input">
+                    <span>Lastname</span>
+                </label>
+            </div>
+            <label>
+                <input id="dob_id" required="" placeholder="" type="date" class="input">
+                <span id="dob_style">Date of birth</span>
+            </label>
+            <label>
+                <select name="gender" id="gender_id" class="input" required>
+                    <option value=""></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span>Gender</span>
+
+            </label>
+
+            <label>
+                <input id="email_id" required="" placeholder="" type="email" class="input">
+                <span>Email</span>
+            </label>
+
+            <label>
+                <input id="phone_id" required="" placeholder="" type="tel" class="input">
+                <span>Phone</span>
+            </label>
+            <label>
+                <input id="address_id" required="" placeholder="" type="text" class="input">
+                <span>Address</span>
+            </label>
+            <label>
+                <input type="number" id="credit_balance" required class="input">
+                <span>Credit Balance</span>
+            </label>
+            <button type="submit" class="submit">Submit</button>
+        </form>
+    </div>
+    <div id="purchase_form_container" class="hidden allFormsdisplay">
+        <form id="purchase_form" class="form">
+            <div class="close_button_container">
+                <button onclick="handleclosePurchase()" class="close_button" type="button" title="close"><svg width="24"
+                        height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m4 4 16 16"></path>
+                        <path d="M4 20 20 4"></path>
+                    </svg>
+
+                </button>
+            </div>
+            <p class="title">Purchase </p>
+            <p class="message">Purchase item from customer</p>
+
+            <label>
+                <select name="purchase" id="purchase_customer_select_id" class="input" required>
+
+                </select>
+                <span>Customer</span>
+
+            </label>
+
+            <label>
+                <input id="purchase_item" required="" placeholder="" type="text" class="input">
+                <span>Item</span>
+            </label>
+
+            <label>
+                <input id="purchase_amount" required="" placeholder="" type="number" class="input">
+                <span>Purchase Amount</span>
+            </label>
+            <button type="submit" class="submit">Submit</button>
+
+        </form>
+    </div>
+
+    <div class="main_container container-sm">
+
+        <div class="header">
+            <h1>Dashboard Overview</h1>
+            <h2>Manage your customers</h2>
+        </div>
+        <div class="balance_container_2">
+            <swiper-container navigation="true">
+                <swiper-slide class="total_disbursments balance-style">
+                    <span>Total disbursments</span>
+                    <h5 id="total_loans">-</h5>
+                </swiper-slide>
+
+                <swiper-slide class="total_sales balance-style">
+                    <span>Total Sales</span>
+                    <h5 id="total_sales_number">-</h5>
+                </swiper-slide>
+                <swiper-slide class="total_customers balance-style">
+                    <span>Total Customers</span>
+                    <h5 id="total_customers_number">-</h5>
+                </swiper-slide>
+            </swiper-container>
+        </div>
+        <div class="balance_container">
+            <div class="total_disbursments balance-style">
+                <span>Total disbursments</span>
+                <h5 id="total_loans_2">-</h5>
+            </div>
+
+            <div class="total_sales balance-style">
+                <span>Total Sales</span>
+                <h5 id="total_sales_number_2">-</h5>
+            </div>
+            <div class="total_customers balance-style">
+                <span>Total Customers</span>
+                <h5 id="total_customers_number_2">-</h5>
+            </div>
+        </div>
+        <div class="buttons_container">
+            <!-- <button type="button" class="myButton" onclick="handleDisburseLoan()">
+                <div class="btn_icon_style">
+                    <p>Disburse Loan</p>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 9H9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2Z"></path>
+                        <path d="M14 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+                        <path d="M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                    </svg>
+                </div>
+            </button> -->
+            <button onclick="handleNewCustomer()" type="button" class="myButton">
+                <span>
+                    <svg width="19" height="19" fill="none" stroke="#141414" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2a5 5 0 1 0 0 10 5 5 0 1 0 0-10z"></path>
+                        <path d="M17 22H5.266a2 2 0 0 1-1.985-2.248l.39-3.124A3 3 0 0 1 6.649 14H7"></path>
+                        <path d="M19 13v6"></path>
+                        <path d="M16 16h6"></path>
+                     </svg> New Customer
+                </span>
+            </button>
+
+            <button onclick="handleDisburseLoan()" type="button" class="myButton">
+                <span>
+                    <svg width="19" height="19" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 9H9a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2Z"></path>
+                        <path d="M14 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+                        <path d="M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                    </svg> Disburse Loan
+                </span>
+            </button>
+
+            <button onclick="handleMakePurchase()" type="button" class="myButton">
+                <span>
+                    <svg width="19" height="19" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2-3 2Z"></path>
+                        <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 1 1 0 3H10"></path>
+                        <path d="M12 6.5V8"></path>
+                        <path d="M12 14v1.5"></path>
+                    </svg> Purchase
+                </span>
+            </button>
+            <!-- <button type="button" class="myButton" onclick="handleNewCustomer()">
+                <div class="btn_icon_style">
+                    <p>New Customer</p>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2a5 5 0 1 0 0 10 5 5 0 1 0 0-10z"></path>
+                        <path d="M17 22H5.266a2 2 0 0 1-1.985-2.248l.39-3.124A3 3 0 0 1 6.649 14H7"></path>
+                        <path d="M19 13v6"></path>
+                        <path d="M16 16h6"></path>
+                    </svg>
+                </div>
+            </button> -->
+            <!-- <button type="button" class="myButton" onclick="handleMakePurchase()">
+                <div class="btn_icon_style">
+                    <p> Make Purchase</p>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2-3 2Z"></path>
+                        <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 1 1 0 3H10"></path>
+                        <path d="M12 6.5V8"></path>
+                        <path d="M12 14v1.5"></path>
+                    </svg>
+                </div>
+            </button> -->
+        </div>
+        <div class="tabs_container">
+            <div class="tab_navigation_container">
+                <div class="radio-input">
+                    <label>
+                        <input onclick="openPurchases()" type="radio" id="value-1" name="value-radio" value="value-1">
+                        <span>Purchases</span>
+                    </label>
+                    <label>
+                        <input onclick="openCustomers()" type="radio" id="value-2" name="value-radio" value="value-2">
+                        <span>Customers</span>
+                    </label>
+                    <label>
+                        <input onclick="openDisbursedLoans()" type="radio" id="value-3" name="value-radio"
+                            value="value-3">
+                        <span>Disbursed Loans</span>
+                    </label>
+                    <label>
+                        <input onclick="openOverdueLoans()" type="radio" id="value-4" name="value-radio"
+                            value="value-4">
+                        <span>Overdue Loans</span>
+                    </label>
+                    <span class="selection"></span>
+                </div>
+                <!-- <div class="navigation_btns_container">
+                    <button class="navigation_btn" type="button" onclick="openRecentPurchases()"
+                        id="recent_purchases_btn">Recent Purchases</button>
+                    <button class="navigation_btn" type="button" onclick="openPurchases()"
+                        id="purchases_btn">Purchases</button>
+                    <button class="navigation_btn" type="button" onclick="openCustomers()"
+                        id="customers_btn">Customers</button>
+                    <button class="navigation_btn" type="button" onclick="openOverdueLoans()"
+                        id="overdue_loans_btn">Overdue Loans</button>
+                    <button class="navigation_btn" type="button" onclick="openDisbursedLoans()"
+                        id="disbursed_loan_btn">Disbursed Loans</button>
+                </div> -->
+                <div class="searchBarinputgroup">
+                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                        <g>
+                            <path
+                                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                            </path>
+                        </g>
+                    </svg>
+                    <input placeholder="Search" type="search" class="searchBarinput" id="searchbar">
+                </div>
+            </div>
+            <div class="tab_display_container container">
+                <div class="recent_purchase_tab">
+
+                </div>
+                <div class="purchase_tab hidden">
+                    <table id="purchases_table">
+                        <thead>
+                            <tr class="table_style">
+                                <th>Transaction ID</th>
+                                <th>Name</th>
+                                <th>Item</th>
+                                <th>Purchase Date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="customers_tab hidden">
+                    <div class="customer_tab_container">
+                        <table id="customers_table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Date of Birth</th>
+                                    <th>Gender</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Credit Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <!-- <div class="customer_id customer_tab_style">
+                            <p>ID</p>
+                        </div>
+                        <div class="customer_name customer_tab_style">
+                            <p>Name</p>
+                        </div>
+                        <div class="customer_email customer_tab_style">
+                            <p>Email</p>
+                        </div>
+                        <div class="customer_dob customer_tab_style">
+                            <p>Date of Birth</p>
+                        </div>
+                        <div class="customer_gender customer_tab_style">
+                            <p>Gender</p>
+                        </div>
+                        <div class="customer_address customer_tab_style">
+                            <p>Address</p>
+                        </div>
+                        <div class="customer_balance customer_tab_style">
+                            <p>Credit Balance</p>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="overdue_loans_tab hidden">
+                    <table id="overdue_loans_table">
+                        <thead>
+                            <tr>
+                                <th>Loan ID</th>
+                                <th>Name</th>
+                                <th>Disbursement Date</th>
+                                <th>Duration(Days)</th>
+                                <th>Deadline</th>
+                                <th>Loan Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div id="Disbursed_loans_tab_id" class="Disbursed_loans_tab hidden">
+                    <table id="disbursed_loans_table">
+                        <thead>
+                            <tr>
+                                <th>Loan Id</th>
+                                <th>Name</th>
+                                <th>Disbursement Date</th>
+                                <th>Duration(Days)</th>
+                                <th>Deadline</th>
+                                <th>Loan Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <!-- <div class="loan_id customer_tab_style">
+                            <p>Loan Id</p>
+                        </div>
+                        <div class="loan_customer_name customer_tab_style">
+                            <p>Name</p>
+                        </div>
+                        <div class="loan_date customer_tab_style">
+                            <p>Disbursement Date</p>
+                        </div>
+                        <div class="loan_duration_days customer_tab_style">
+                            <p>Duration(days)</p>
+                        </div>
+                        <div class="loan_duration_date customer_tab_style">
+                            <p>Deadline</p>
+                        </div>
+                        <div class="disbursed_loan_amount customer_tab_style">
+                            <p>Loan Amount</p>
+                        </div> -->
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
